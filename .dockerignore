@@ -1,0 +1,16 @@
+.git
+.gitignore
+.venv
+__pycache__
+*.pyc
+.pytest_cache
+.idea
+.env
+.cache
+data
+tests
+scripts
+uploaded_docs
+faiss_db
+.qdrant_local
+progress.db

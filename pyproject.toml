@@ -17,6 +17,8 @@ dependencies = [
     "python-dotenv",
     "streamlit",
     "fastembed",
+    "faiss-cpu",
+    "pypdf",
     "langchain-groq>=1.1.3",
     "pydantic-settings>=2.15.0",
     "langchain-google-genai>=4.4.0",
@@ -25,7 +27,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["pytest"]
+dev = ["pytest", "pytest-cov"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
@@ -33,3 +35,12 @@ where = ["src"]
 [tool.pytest.ini_options]
 pythonpath = ["src"]
 testpaths = ["tests"]
+addopts = "--cov=studybuddy --cov=main"
+
+[tool.coverage.run]
+branch = true
+source = ["studybuddy", "main"]
+
+[tool.coverage.report]
+fail_under = 90
+show_missing = true

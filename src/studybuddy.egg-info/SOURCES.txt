@@ -2,6 +2,7 @@ README.md
 pyproject.toml
 src/studybuddy/__init__.py
 src/studybuddy/config.py
+src/studybuddy/embed_cache.py
 src/studybuddy/ingest.py
 src/studybuddy/measure_quiz_validity.py
 src/studybuddy/progress.py
@@ -16,4 +17,13 @@ src/studybuddy.egg-info/SOURCES.txt
 src/studybuddy.egg-info/dependency_links.txt
 src/studybuddy.egg-info/requires.txt
 src/studybuddy.egg-info/top_level.txt
+tests/test_cli.py
+tests/test_config.py
+tests/test_embed_cache.py
+tests/test_ingest.py
+tests/test_progress.py
 tests/test_project.py
+tests/test_qa.py
+tests/test_quiz.py
+tests/test_ui.py
+tests/test_vectorstore.py

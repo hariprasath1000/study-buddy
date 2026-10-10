@@ -155,17 +155,25 @@ docker run --rm -p 8501:8501 --env-file .env -v studybuddy-data:/app/data studyb
 ## Testing
 
 ```bash
+uv sync --extra dev
 uv run pytest -v
 ```
 
+The test suite enforces **at least 90% branch coverage** across the app and
+library modules. Current coverage is 99.52%. Tests use fake models and local
+temporary databases/files, so no live API key or network call is required.
+
 | Test file | What it covers |
 |---|---|
-| `test_ingest.py` | Loading, chunking, metadata, retrieval of the right file, index save and load |
-| `test_qa.py` | Citation mapping, dropped invented citations, relevance gate skipping the LLM |
-| `test_quiz.py` | Schema validation, verification gate, rejected questions, validity rate |
-| `test_progress.py` | Topic statistics, weak-topic rules, history, reset, hostile input stored as data |
-| `test_embed_cache.py` | Cache hits and misses, persistence across restarts, namespace isolation |
-| `test_app.py` | The app starts without errors |
+| `test_ingest.py` | Text/PDF loading, blank-page handling, unsupported types, chunking and empty input |
+| `test_embed_cache.py` | Cache hits/misses, duplicate and namespaced vectors, query behavior and large batches |
+| `test_vectorstore.py` | Embedding adapter, caching, batching, progress callbacks, index save/load |
+| `test_qa.py` | Relevance filtering, prompt context, citations, ungrounded answers and provider configuration |
+| `test_quiz.py` | MCQ validation, source topics, chunk sampling, verification/rejections and batch limits |
+| `test_progress.py` | SQLite attempts, topic stats, weak-topic thresholds, history and reset |
+| `test_config.py` | Provider readiness and setting defaults/overrides |
+| `test_ui.py` | Streamlit `AppTest` coverage of uploads, Q&A, quizzes, progress, errors and app startup |
+| `test_cli.py` | Main entry point and evaluation script output |
 
 Most tests use a fake LLM and run offline. A single live-LLM test runs only when an API key is configured.
 

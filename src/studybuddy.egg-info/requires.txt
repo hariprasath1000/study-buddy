@@ -6,6 +6,8 @@ langgraph
 python-dotenv
 streamlit
 fastembed
+faiss-cpu
+pypdf
 langchain-groq>=1.1.3
 pydantic-settings>=2.15.0
 langchain-google-genai>=4.4.0
@@ -14,3 +16,4 @@ langchain-ollama>=1.1.0
 
 [dev]
 pytest
+pytest-cov

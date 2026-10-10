@@ -1,5 +1,11 @@
 .env
 .venv/
+.cache/
 __pycache__/
-*.py[cod]
 .pytest_cache/
+.coverage
+htmlcov/
+.idea/
+uploaded_docs/
+faiss_db/
+progress.db
